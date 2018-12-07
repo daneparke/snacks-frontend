@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const Snack = (props) => {
     let snack = props.oneSnack.map(snack => {
         if (props.oneSnack.length > 0) {
@@ -12,10 +11,7 @@ const Snack = (props) => {
                     <img src={snack.image_url} alt={snack.name} className='row snackImage'></img>
                     <div className='row'>{`${snack.is_perishable ? 'This is' : 'Not'}`} Perishable</div>
                     <div className='row'>{snack.description}</div>
-                    {/* <button onClick={props.editMovieButton} id={movie.id} className='col-2'>Edit</button> */}
-                    {/* <Link className='col-3' to='/snack/edit'><button id={snack.id}>Edit</button></Link> */}
                     <div className='row'>{snack.description}</div>
-                    {/* <div>{review}</div> */}
                     <Link to='/add'><button onClick={props.snackIDForReview} id={snack.id}>Add Review</button></Link>
                 </div>
             )

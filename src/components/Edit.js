@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const Edit = (props) => {
     let review = props.review.map(review => {
         return (
-
             <div className='col-5 addForm'>
                 <label className='row'>Title</label>
                 <input className='row' onChange={props.handleInput} className='reviewInput' type='text' placeholder={review.title} placeholder='Desired Username' name='title' />
@@ -14,19 +12,8 @@ const Edit = (props) => {
                 <label className='row'>Rating</label>
                 <input className='row' onChange={props.handleInput} className='reviewInput' type='text' placeholder={review.rating} name='rating' />
                 <Link to='/home'><button onClick={props.editReview} id={review.id}>Edit Review</button></Link>
-
-                {/* <Link to={`${props.allInputted ? '/home' : '/'}`}> <button onClick={props.addMovie} type="submit" className="btn btn-dark">Existing User</button></Link> */}
             </div>
-            // <div className='reviews'>
-            //     <div className='row'>{review.title}</div>
-            //     <div className='row'>{review.text}</div>
-            //     <div className='row'>{review.rating}</div>
-
-            //     <Link to='snack/edit'><button onClick={props.editReview} id={review.id}>Edit Review</button></Link>
-
-            // </div>
         )
-
     })
     return (
         <>

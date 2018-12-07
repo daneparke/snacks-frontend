@@ -27,12 +27,10 @@ class App extends Component {
       reviewSnackID: undefined,
     }
   }
-
   componentDidMount() {
     this.loadSnacks()
     this.loadReviews()
   }
-
   handleInput = (event) => {
     const { value, name } = event.target
     this.setState({
@@ -107,7 +105,6 @@ class App extends Component {
       body: JSON.stringify(updatedReview)
     }).then(response => response.json())
       .then(() => this.loadReviews())
-
   }
   loadReviews = () => {
     fetch("http://snacks-backend-io.herokuapp.com/reviews")
