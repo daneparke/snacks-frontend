@@ -38,47 +38,12 @@ class App extends Component {
     this.setState({
       [name]: value
     })
-    // if (this.state.firstName.length > 0 && this.state.password.length > 0 && this.state.lastName.length > 0 && this.state.email.length > 0) {
-    //   this.setState({
-    //     loginInputted: true,
-    //   })
-    // }
-    // else 
     if (this.state.title.length > 0 && this.state.reviewText.length > 0 && this.state.rating !== 0) {
       this.setState({
         reviewInputted: true,
       })
     }
   }
-  // addUser = (event) => {
-  //   if (logInputted === false) {
-  //     alert("Please Fill Out All Fields")
-  //   }
-  //   var newUser = {
-  //     first_name: this.state.firstName,
-  //     last_name: this.state.lastName,
-  //     email: this.state.email,
-  //     password: this.state.password,
-  //   }
-  //   fetch('http://localhost:3004/users', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(newUser)
-  //   })
-  //     .then(response => response.json())
-  //     .then(() => this.loadSnacks())
-  //     .then((response) => {
-  //       this.setState({
-  //         loginInputted: false,
-  //         firstName: '',
-  //         lastName: '',
-  //         email: response.email,
-  //         password: response.password,
-  //       })
-  //     })
-  // }
   snackDetailsClick = (event) => {
     fetch(`http://snacks-backend-io.herokuapp.com/snacks/${event.target.id}`)
       .then(result => result.json())
@@ -119,7 +84,6 @@ class App extends Component {
     })
   }
   editReviewClick = (event) => {
-    console.log(event.target.id)
     fetch(`http://snacks-backend-io.herokuapp.com/reviews/${event.target.id}`)
       .then(result => result.json())
       .then((response) => {
