@@ -1,4 +1,35 @@
 .center{
   display: flex;
-  justify-content: center
+  flex-direction: column;
+  align-items: center;
+}
+.loginForm{
+  display:flex;
+  flex-direction: column;
+}
+.userHeader{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size:1.4em;
+}
+.userLabel{
+  color:#00A9DD;
+}
+header{
+  background-color:grey
+}
+.ratingInput{
+  min-width: 50%
+}
+.hidden{
+  display:none;
+}
+.snacksLogo{
+  min-width:20em;
+}
+.invalidExistingUser{
+  color:red;
+  font-weight: bold;
+  
 }

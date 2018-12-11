@@ -13,7 +13,7 @@ const Home = (props) => {
                         {/* <img src={snack.image_url} alt={`Picture of ${snack.name}`} className='row snackImage'></img> */}
                         {/* <div className='col-2'>{snack.rating}</div> */}
                         {/* <button onClick={props.editMovieButton} id={movie.id} className='col-2'>Edit</button> */}
-                        {/* <Link className='col-3' to='/edit'><button id={snack.id}>Edit</button></Link> */}
+                        {/* <Link className='col-3' to='3/edit'><button id={snack.id}>Edit</button></Link> */}
                     </div>
                 </Link>
                 {/* <button onClick={props.deleteSnack} id={snack.id} className='col-3'>Delete</button> */}

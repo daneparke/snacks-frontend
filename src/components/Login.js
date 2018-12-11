@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 const Login = (props) => {
     return (
         <>
-            <div className='col-5 loginForm'>
-                <h3><b>Welcome</b></h3>
-                <img alt='snacks logo' src='/snacks_logo.png'></img>
+            <button className={`btn btn-dark ${props.showFirstButtons ? '' : 'hidden'}`} onClick={props.existingClick}>Existing User</button>
+            <button className={`btn btn-dark ${props.showFirstButtons ? '' : 'hidden'}`} onClick={props.signUpClick}>Sign Up</button>
+            <div className={`col-5 loginForm ${props.showSignUpInput ? '' : 'hidden'}`}>
                 <label>First Name</label>
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='Mike' name='firstName' />
                 <label>Last Name</label>
@@ -16,10 +16,17 @@ const Login = (props) => {
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='your@email.com' name='email' />
                 <label>Password</label>
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='******' name='password' />
-                {/* <Link to={`${props.allInputted ? '/home' : '/'}`}> <button onClick={props.addUser} type="submit" className="btn btn-dark">Existing User</button></Link> */}
-                {/* <Link to={`${props.allInputted ? '/home' : '/'}`}> <button onClick={props.addUser} type="submit" className="btn btn-dark">Sign Up</button></Link> */}
-                <Link to='/home'> <button type="submit" className="btn btn-dark">Sign Up</button></Link>
-
+                <Link to={`${props.signUpInputted ? '/home' : '/'}`}> <button onClick={props.addUser} type='submit' className='btn btn-dark'>Sign Up</button></Link>
+                <button onClick={props.existingClick} type='submit' className='btn btn-dark'>I Already Have An Account</button>
+            </div>
+            <div className={`col-5 loginForm ${props.showExistingInput ? '' : 'hidden'}`}>
+                <label>Email</label>
+                <input onChange={props.handleInput} className='loginInput' type='text' placeholder='your@email.com' name='email' />
+                <label>Password</label>
+                <input onChange={props.handleInput} className='loginInput' type='password' placeholder='******' name='password' />
+                <Link to={`${props.existingUserInputted ? '/home' : '/'}`}> <button onClick={props.existingUser} className='btn btn-dark'>Login</button></Link>
+                <button className='btn btn-dark' onClick={props.signUpClick}>I Don't Have An Account</button>
+                <div className={`invalidExistingUser ${props.invalidUser ? '' : 'hidden'}`}>Invalid Email or Password. Retry or Create New Account</div>
             </div>
         </>
     )
