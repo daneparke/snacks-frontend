@@ -6,16 +6,28 @@ const Snack = (props) => {
     let reviewLength = 0
     let snack = props.oneSnack.map(snack => {
         if (props.oneSnack.length > 0) {
-            return (
-                <div className='snackInfo' key={`snack ${snack.id}`}>
-                    <div className='row'>{snack.name}</div>
-                    <div className='row'>{snack.price}</div>
-                    <img src={snack.image_url} alt={snack.name} className='row snackImage'></img>
-                    <div className='row'>{`${snack.is_perishable ? 'This is' : 'Not'}`} Perishable</div>
-                    <div className='row'>{snack.description}</div>
-                    <Link to='/add'><button onClick={props.snackIDForReview} id={snack.id}>Add Review</button></Link>
-                </div>
-            )
+            if (props.userLoggedIn === true) {
+                return (
+                    <div className='snackInfo' key={`snack ${snack.id}`}>
+                        <div className='row'>{snack.name}</div>
+                        <div className='row'>{snack.price}</div>
+                        <img src={snack.image_url} alt={snack.name} className='row snackImage'></img>
+                        <div className='row'>{`${snack.is_perishable ? 'This is' : 'Not'}`} Perishable</div>
+                        <div className='row'>{snack.description}</div>
+                        <Link to='/add'><button onClick={props.snackIDForReview} id={snack.id}>Add Review</button></Link>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className='snackInfo' key={`snack ${snack.id}`}>
+                        <div className='row'>{snack.name}</div>
+                        <div className='row'>{snack.price}</div>
+                        <img src={snack.image_url} alt={snack.name} className='row snackImage'></img>
+                        <div className='row'>{`${snack.is_perishable ? 'This is' : 'Not'}`} Perishable</div>
+                        <div className='row'>{snack.description}</div>
+                    </div>
+                )
+            }
         } else {
             return null
         }

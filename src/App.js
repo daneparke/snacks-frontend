@@ -32,7 +32,8 @@ class App extends Component {
       showSignUpInput: false,
       showFirstButtons: true,
       currentUser: [],
-      invalidUser: false
+      invalidUser: false,
+      userLoggedIn: false
     }
   }
   componentDidMount() {
@@ -85,11 +86,13 @@ class App extends Component {
         .then(result => result.json())
         .then((response) => {
           response.map(user => {
-            if (user.email == this.state.email && user.hashed_password == this.state.password) {
+            if (user.email === this.state.email && user.hashed_password === this.state.password) {
               this.setState({
-                currentUser: user
+                currentUser: user,
+                userLoggedIn: true
               })
             }
+            return null
           })
         })
     }
@@ -117,7 +120,8 @@ class App extends Component {
           currentUser: response,
           signUpInputted: false,
           email: '',
-          password: ''
+          password: '',
+          userLoggedIn: true
         })
       })
   }
@@ -179,6 +183,10 @@ class App extends Component {
       .then((response) => {
         this.setState({
           review: [response],
+          rating: response.rating,
+          title: response.title,
+          reviewText: response.text,
+          reviewInputted: true,
         })
       })
   }
@@ -195,7 +203,6 @@ class App extends Component {
         text: this.state.reviewText,
         rating: this.state.rating,
         snack_id: this.state.reviewSnackID,
-
       }
       fetch(`http://localhost:3000/reviews/${event.target.id}`, {
         method: 'PUT',
@@ -210,6 +217,7 @@ class App extends Component {
             rating: 0,
             title: '',
             reviewText: '',
+            review: []
           })
         })
     }
