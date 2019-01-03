@@ -16,7 +16,8 @@ const Login = (props) => {
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='your@email.com' name='email' />
                 <label>Password</label>
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='******' name='password' />
-                <Link to={`${props.signUpInputted ? '/home' : '/'}`}> <button onClick={props.addUser} type='submit' className='btn btn-dark'>Sign Up</button></Link>
+                <label className='checkbox-inline'><input onClick={props.checkAdmin} type='checkbox' />Admin ?</label>
+                <Link to={`${props.adminSelected ? '/admin' : props.signUpInputted ? '/home' : '/'}`}> <button onClick={props.addUser} type='submit' className='btn btn-dark'>Sign Up</button></Link>
                 <button onClick={props.existingClick} type='submit' className='btn btn-dark'>I Already Have An Account</button>
             </div>
             <div className={`col-5 loginForm ${props.showExistingInput ? '' : 'hidden'}`}>
@@ -24,7 +25,9 @@ const Login = (props) => {
                 <input onChange={props.handleInput} className='loginInput' type='text' placeholder='your@email.com' name='email' />
                 <label>Password</label>
                 <input onChange={props.handleInput} className='loginInput' type='password' placeholder='******' name='password' />
-                <Link to={`${props.existingUserInputted ? '/home' : '/'}`}> <button onClick={props.existingUser} className='btn btn-dark'>Login</button></Link>
+                <Link to={`${props.existingUserInputted ? props.currentUser.admin ? '/admin' : '/home' : '/'}`}>
+                    <button onClick={props.existingUser} className='btn btn-dark'>Login</button>
+                </Link>
                 <button className='btn btn-dark' onClick={props.signUpClick}>I Don't Have An Account</button>
                 <div className={`invalidExistingUser ${props.invalidUser ? '' : 'hidden'}`}>Invalid Email or Password. Retry or Create New Account</div>
             </div>

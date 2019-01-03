@@ -5,8 +5,13 @@ import Snack from './components/Snack'
 import Login from './components/Login'
 import Edit from './components/Edit'
 import Add from './components/Add'
+import Admin from './components/Admin'
 import './App.css';
-import snacksLogo from './snacks_logo.png'
+import Header from './components/Header'
+import NewSnack from './components/NewSnack'
+import EditSnack from './components/EditSnack'
+import { Link } from 'react-router-dom'
+
 
 
 class App extends Component {
@@ -33,7 +38,8 @@ class App extends Component {
       showFirstButtons: true,
       currentUser: [],
       invalidUser: false,
-      userLoggedIn: false
+      userLoggedIn: false,
+      adminSelected: false
     }
   }
   componentDidMount() {
@@ -97,6 +103,17 @@ class App extends Component {
         })
     }
   }
+  checkAdmin = (event) => {
+    if (event.target.checked) {
+      this.setState({
+        adminSelected: true
+      })
+    } else {
+      this.setState({
+        adminSelected: false
+      })
+    }
+  }
   addUser = (event) => {
     if (this.state.signUpInputted === false) {
       alert('Please Fill Out All Fields')
@@ -105,7 +122,8 @@ class App extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName,
       email: this.state.email,
-      hashed_password: this.state.password
+      hashed_password: this.state.password,
+      admin: this.state.adminSelected
     }
     fetch('http://localhost:3000/users', {
       method: 'POST',
@@ -118,14 +136,12 @@ class App extends Component {
       .then((response) => {
         this.setState({
           currentUser: response,
-          signUpInputted: false,
           email: '',
           password: '',
           userLoggedIn: true
         })
       })
   }
-
   snackDetailsClick = (event) => {
     fetch(`http://localhost:3000/snacks/${event.target.id}`)
       .then(result => result.json())
@@ -178,6 +194,9 @@ class App extends Component {
     })
   }
   editReviewClick = (event) => {
+    this.setState({
+      reviewSnackID: event.target.name
+    })
     fetch(`http://localhost:3000/reviews/${event.target.id}`)
       .then(result => result.json())
       .then((response) => {
@@ -244,19 +263,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className='row col-12'>
-          <img className='col-5 snacksLogo' alt='snacks logo' src={snacksLogo}></img>
-          <div className='userHeader col-7'>
-            <p className='userLabel'><b>User:</b></p>
-            <p className='userName'><b>{this.state.currentUser.first_name} {this.state.currentUser.last_name}</b></p>
-          </div>
-        </header>
-        <div className='center'>
-          <Route path='/' exact render={() => (<Login existingUser={this.existingUser} addUser={this.addUser} signUpClick={this.signUpClick} existingClick={this.existingClick} handleInput={this.handleInput} {...this.state} />)} />
+        <Header existingClick={this.existingClick} signUpClick={this.signUpClick}{...this.state} />
+        <div className='container'>
+          <Route path='/' exact render={() => (<Login checkAdmin={this.checkAdmin} existingUser={this.existingUser} addUser={this.addUser} signUpClick={this.signUpClick} existingClick={this.existingClick} handleInput={this.handleInput} {...this.state} />)} />
+          <Route path='/admin' render={() => (<Admin {...this.state} />)} />
           <Route path='/home' render={() => (<Home snackDetailsClick={this.snackDetailsClick} {...this.state} />)} />
-          <Route path='/snack' render={() => (<Snack snackIDForReview={this.snackIDForReview} deleteReview={this.deleteReview} editReviewClick={this.editReviewClick} {...this.state} />)} />
-          <Route path='/edit' render={() => (<Edit handleInput={this.handleInput} editReview={this.editReview}{...this.state} />)} />
+          <Route path='/snack/id/:id' render={(props) => (<Snack {...props} snackIDForReview={this.snackIDForReview} deleteReview={this.deleteReview} editReviewClick={this.editReviewClick} {...this.state} />)} />
+          <Route path='/edit' render={() => (<Edit handleInput={this.handleInput} editReview={this.editReview} {...this.state} />)} />
           <Route path='/add' render={() => (<Add handleInput={this.handleInput} addReview={this.addReview} {...this.state} />)} />
+          <Route path='/newsnack' render={() => (<NewSnack handleInput={this.handleInput} {...this.state} />)} />
+          <Route path='/editsnack/id/:id' render={(props) => (<EditSnack {...props} handleInput={this.handleInput} {...this.state} />)} />
         </div>
       </>
     );

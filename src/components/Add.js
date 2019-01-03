@@ -14,7 +14,7 @@ const Add = (props) => {
                     <label>Review</label>
                     <input onChange={props.handleInput} className='reviewInput' type='text' placeholder='Review Text' name='reviewText' />
                 </div>
-                <Link to={`${props.reviewInputted ? '/snack' : '/add'}`}><button onClick={props.addReview}>Add Review</button></Link>
+                <Link to={`${props.reviewInputted ? `snack/id/${props.reviewSnackID}` : '/add'}`}><button onClick={props.addReview}>Add Review</button></Link>
             </div>
         </>
     )

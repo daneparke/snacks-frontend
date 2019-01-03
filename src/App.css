@@ -17,13 +17,10 @@
   color:#00A9DD;
 }
 header{
-  background-color:grey
+  background-color:grey;
 }
 .ratingInput{
   min-width: 50%
-}
-.hidden{
-  display:none;
 }
 .snacksLogo{
   min-width:20em;
@@ -31,5 +28,59 @@ header{
 .invalidExistingUser{
   color:red;
   font-weight: bold;
-  
+}
+.backSnacksRow{
+  width:90vw;
+  display:flex;
+  justify-content: flex-end;
+  position:sticky;
+  z-index: 999;
+  top:0px;
+  margin-right:5%;
+}
+.snackImage{
+  max-height:8em;
+  max-width:100%;
+  border-radius:20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+/* .adminSnackButtons{
+  display: flex;
+  justify-content: flex-end;
+} */
+.adminSnackButtonsCenter{
+  display: flex;
+  justify-content: center;
+}
+.adminHeader{
+  display: flex;
+  justify-content: center;
+}
+.newSnackButton{
+  display: flex;
+  justify-content: flex-end; 
+  position:sticky;
+  z-index: 999;
+  top:0px;
+}
+.editSnack{
+  display: flex;
+  flex-direction: column;
+}
+.signInButtons{
+  display:flex;
+  justify-content: flex-end;
+  width:100vw;
+}
+.snackList{
+  border:black solid 1px;
+  border-radius:20px;
+  width:30%;
+  margin:.5em;
+  padding:.3em;
+}
+.hidden{
+  display:none;
 }
