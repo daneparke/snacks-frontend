@@ -17,7 +17,7 @@ const Admin = (props) => {
                     </div>
                 </Link>
                 <div className={`adminSnackButtonsCenter ${props.currentUser.admin ? '' : 'hidden'}`}>
-                    <Link onClick={props.snackIDForReview} id={snack.id} to={`/editsnack/id/${snack.id}`}><button>Edit</button></Link>
+                    <Link onClick={props.editSnackClick} id={snack.id} to={`/editsnack/id/${snack.id}`}><button id={snack.id}>Edit</button></Link>
                     {/* <Link className='adminSnackButtons' to='/edit'><button onClick={props.editSnackClick} id={snack.id}>Edit</button></Link> */}
                     <button className='adminSnackButtons' onClick={props.deleteSnack} id={snack.id}>Delete</button>
                 </div>

@@ -9,16 +9,16 @@ const EditSnack = (props) => {
             <div className='editSnack' key={`snack ${snack[0].id}`}>
                 <img src={snack[0].image_url} alt={snack[0].name} className='snackImage'></img>
                 <label>Name</label>
-                <input onChange={props.handleInput} type='text' defaultValue={snack[0].name} name='url' />
+                <input onChange={props.handleInput} type='text' defaultValue={snack[0].name} name='snackName' />
                 <label>Price</label>
-                <input onChange={props.handleInput} type='text' defaultValue={snack[0].price} name='url' />
+                <input onChange={props.handleInput} type='text' defaultValue={snack[0].price} name='snackPrice' />
                 <label>Perishable?</label>
-                <input onChange={props.handleInput} type='text' defaultValue={snack[0].is_perishable} name='url' />
+                <input onChange={props.handleInput} type='text' defaultValue={snack[0].is_perishable} name='snackPerishable' />
                 <label>Description</label>
-                <input onChange={props.handleInput} type='text' defaultValue={snack[0].description} name='url' />
+                <input onChange={props.handleInput} type='text' defaultValue={snack[0].description} name='snackDescription' />
                 <label>Image URL</label>
-                <input onChange={props.handleInput} type='text' defaultValue={snack[0].image_url} name='url' />
-                <Link to='/admin' ><button> Edit Snack</button> </Link>
+                <input onChange={props.handleInput} type='text' defaultValue={snack[0].image_url} name='snackUrl' />
+                <Link to='/admin' ><button onClick={props.editSnack} id={snack[0].id}> Edit Snack</button> </Link>
             </div>
         </>
     )

@@ -32,6 +32,11 @@ class App extends Component {
       reviewInputted: false,
       reviews: [],
       review: [],
+      snackName: '',
+      snackPrice: 0,
+      snackPerishable: null,
+      snackDescription: '',
+      snackUrl: '',
       reviewSnackID: undefined,
       showExistingInput: false,
       showSignUpInput: false,
@@ -241,6 +246,73 @@ class App extends Component {
         })
     }
   }
+  editSnackClick = (event) => {
+    fetch(`http://localhost:3000/snacks/${event.target.id}`)
+      .then(result => result.json())
+      .then((response) => {
+        this.setState({
+          snackName: response.name,
+          snackPrice: response.price,
+          snackPerishable: response.is_perishable,
+          snackDescription: response.description,
+          snackUrl: response.image_url,
+        })
+      })
+  }
+  editSnack = (event) => {
+    var updatedSnack = {
+      name: this.state.snackName,
+      description: this.state.snackDescription,
+      is_perishable: this.state.snackPerishable,
+      price: this.state.snackPrice,
+      image_url: this.state.snackUrl
+    }
+    fetch(`http://localhost:3000/snacks/${event.target.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedSnack)
+    }).then(response => response.json())
+      .then(() => this.loadSnacks()).then(() => {
+        this.setState({
+          snackName: '',
+          snackPrice: 0,
+          snackPerishable: null,
+          snackDescription: '',
+          snackUrl: '',
+        })
+      })
+  }
+  addSnack = (event) => {
+    var newSnack = {
+      name: this.state.snackName,
+      description: this.state.snackDescription,
+      price: this.state.snackPrice,
+      is_perishable: this.state.snackPerishable,
+      image_url: this.state.snackUrl,
+    }
+    fetch('http://localhost:3000/snacks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newSnack)
+    })
+      .then(response => response.json())
+      .then(() => this.loadSnacks())
+      .then(() => {
+        this.setState({
+          // reviewInputted: false,
+          // rating: 0
+        })
+      })
+  }
+  deleteSnack = (event) => {
+    fetch(`http://localhost:3000/snacks/${event.target.id}`, {
+      method: 'DELETE',
+    }).then(() => this.loadSnacks())
+  }
   loadReviews = () => {
     fetch('http://localhost:3000/reviews')
       .then(result => result.json())
@@ -266,13 +338,13 @@ class App extends Component {
         <Header existingClick={this.existingClick} signUpClick={this.signUpClick}{...this.state} />
         <div className='container'>
           <Route path='/' exact render={() => (<Login checkAdmin={this.checkAdmin} existingUser={this.existingUser} addUser={this.addUser} signUpClick={this.signUpClick} existingClick={this.existingClick} handleInput={this.handleInput} {...this.state} />)} />
-          <Route path='/admin' render={() => (<Admin {...this.state} />)} />
+          <Route path='/admin' render={() => (<Admin editSnackClick={this.editSnackClick} deleteSnack={this.deleteSnack} {...this.state} />)} />
           <Route path='/home' render={() => (<Home snackDetailsClick={this.snackDetailsClick} {...this.state} />)} />
           <Route path='/snack/id/:id' render={(props) => (<Snack {...props} snackIDForReview={this.snackIDForReview} deleteReview={this.deleteReview} editReviewClick={this.editReviewClick} {...this.state} />)} />
           <Route path='/edit' render={() => (<Edit handleInput={this.handleInput} editReview={this.editReview} {...this.state} />)} />
           <Route path='/add' render={() => (<Add handleInput={this.handleInput} addReview={this.addReview} {...this.state} />)} />
-          <Route path='/newsnack' render={() => (<NewSnack handleInput={this.handleInput} {...this.state} />)} />
-          <Route path='/editsnack/id/:id' render={(props) => (<EditSnack {...props} handleInput={this.handleInput} {...this.state} />)} />
+          <Route path='/newsnack' render={() => (<NewSnack handleInput={this.handleInput} addSnack={this.addSnack} {...this.state} />)} />
+          <Route path='/editsnack/id/:id' render={(props) => (<EditSnack {...props} editSnack={this.editSnack} handleInput={this.handleInput} {...this.state} />)} />
         </div>
       </>
     );
