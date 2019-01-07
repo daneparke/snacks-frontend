@@ -5,10 +5,10 @@ import snacksLogo from '../snacks_logo.png'
 
 const Header = (props) => {
     return (
-        <header className='row col-12'>
+        <header className='header row col-12'>
             <img className='col-5 snacksLogo' alt='snacks logo' src={snacksLogo}></img>
             <div className='userHeader col-7'>
-                <p className='userLabel'><b>User:</b></p>
+                <p className='userLabel'><b>{`${props.currentUser.first_name ? 'User:' : 'Not Logged In'}`}</b></p>
                 <p className='userName'><b>{props.currentUser.first_name} {props.currentUser.last_name}</b></p>
             </div>
             <div className='row'>

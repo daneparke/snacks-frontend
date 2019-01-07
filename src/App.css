@@ -3,10 +3,19 @@
   flex-direction: column;
   align-items: center;
 }
+.loginButtons{
+  display: flex;
+  flex-direction: column;
+}
 .loginForm{
   display:flex;
   flex-direction: column;
 }
+.loginContainer{
+  display: flex;
+  justify-content: center;
+}
+
 .userHeader{
   display: flex;
   align-items: center;
@@ -16,21 +25,23 @@
 .userLabel{
   color:#00A9DD;
 }
-header{
+.header{
   background-color:grey;
+  margin:0 auto;
 }
 .ratingInput{
   min-width: 50%
 }
 .snacksLogo{
-  min-width:20em;
+  min-width:21em;
+  max-width:21em;
 }
 .invalidExistingUser{
   color:red;
   font-weight: bold;
 }
 .backSnacksRow{
-  width:90vw;
+  width:100vw;
   display:flex;
   justify-content: flex-end;
   position:sticky;
@@ -46,10 +57,6 @@ header{
   display: flex;
   align-items: center;
 }
-/* .adminSnackButtons{
-  display: flex;
-  justify-content: flex-end;
-} */
 .adminSnackButtonsCenter{
   display: flex;
   justify-content: center;
@@ -57,17 +64,14 @@ header{
 .adminHeader{
   display: flex;
   justify-content: center;
+  font-weight: bold;
+  font-size: 1.5em;
 }
-.newSnackButton{
-  display: flex;
-  justify-content: flex-end; 
+.backSnacksButton{
   position:sticky;
   z-index: 999;
   top:0px;
-}
-.editSnack{
-  display: flex;
-  flex-direction: column;
+  right:10px;
 }
 .signInButtons{
   display:flex;
@@ -80,7 +84,86 @@ header{
   width:30%;
   margin:.5em;
   padding:.3em;
+  background-color:rgb(207, 207, 207);
 }
+.invidivualSnackImage{
+  height:auto;
+  width: 50vw;
+  border-radius:20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.snackHeader{
+  text-align: center;
+}
+.snackName{
+  font-size:2em;
+}
+a{
+  color:black;
+  text-align: center;
+}
+.removeUnderline:hover{
+  text-decoration: none;
+}
+a :hover{
+  color:rgb(0, 119, 155);
+}
+.buttonHover:hover{
+  color:rgb(0, 119, 155);
+}
+.reviews{
+  border:solid black 1px;
+  background-color:rgb(248, 242, 233);
+  border-radius: 10px;
+  margin:.5em;
+  padding-left:2em;
+}
+.form-container{
+  display:flex;
+  flex-direction: column;
+  border:rgb(148, 148, 148) 1px solid;
+  border-radius:1em;
+  padding:2em;
+  margin-top:1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 119, 155, 0.2), 0 6px 20px 0 rgba(0, 119, 155, 0.19);
+}
+.form-group{
+  margin:1em;
+  display:flex;
+  flex-direction: column;
+}
+.formContainer{
+  margin-top:1em;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.formTitle{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+button{
+  border-radius:5px;
+  background-color:rgb(245, 245, 245);
+  margin:.1em;
+}
+
+@media (min-width : 319px) and (max-width : 569px) {
+  .smallScreen{
+    display: flex;
+    flex-direction: column;
+  }
+  .snackList{
+    width:80vw;
+    display:flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column
+  }
+}
+
 .hidden{
   display:none;
 }

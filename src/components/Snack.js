@@ -60,9 +60,11 @@ const Snack = (props) => {
                             <div className='row'>User: {review.first_name} {review.last_name}</div>
                             <div className='row'>
                                 <div className='col-1'>{review.rating}</div>
-                                <div className='col-5'>{review.text}</div>
-                                <button onClick={props.deleteReview} id={review.id}>Delete Review</button>
-                                <Link to='/edit'><button onClick={props.editReviewClick} name={review.snack_id} id={review.id}>Edit Review</button></Link>
+                                <div className='col-8'>{review.text}</div>
+                                <div>
+                                    <Link to='/edit'><button onClick={props.editReviewClick} name={review.snack_id} id={review.id}>Edit Review</button></Link>
+                                    <button className='buttonHover' onClick={props.deleteReview} id={review.id}>Delete Review</button>
+                                </div>
                             </div>
                         </div>
                     )
@@ -75,8 +77,8 @@ const Snack = (props) => {
                             <div className='row'>User: {review.first_name} {review.last_name}</div>
                             <div className='row'>
                                 <div className='col-1'>{review.rating}</div>
-                                <div className='col-5'>{review.text}</div>
-                                <button onClick={props.deleteReview} id={review.id}>Delete Review</button>
+                                <div className='col-9'>{review.text}</div>
+                                <button className='buttonHover' onClick={props.deleteReview} id={review.id}>Delete Review</button>
                             </div>
                         </div>
                     )
@@ -90,8 +92,8 @@ const Snack = (props) => {
                             <div className='row'>User: {review.first_name} {review.last_name}</div>
                             <div className='row'>
                                 <div className='col-1'>{review.rating}</div>
-                                <div className='col-5'>{review.text}</div>
-                                <button onClick={props.reportReview} id={review.id}>Report Review</button>
+                                <div className='col-9'>{review.text}</div>
+                                <button className='buttonHover' onClick={props.reportReview} id={review.id}>Report Review</button>
                             </div>
                         </div>
                     )
@@ -117,11 +119,13 @@ const Snack = (props) => {
             <div className='row backSnacksRow'>
                 <Link to='/home' className='backSnacksButton'><button className='col-12'>Back To Snacks</button></Link>
             </div>
-            <div>Average Rating: {(totalRating / reviewLength).toFixed(2)}</div>
             <div className='snackInfo' key={`snack ${snack[0].id}`}>
-                <div>{snack[0].name}</div>
-                <div>{snack[0].price}</div>
-                <img src={snack[0].image_url} alt={snack[0].name} className='snackImage'></img>
+                <div className='snackHeader'>
+                    <div className='snackName'>{snack[0].name}</div>
+                    <div>Average Rating: {`${reviewLength > 0 ? `${(totalRating / reviewLength).toFixed(2)}` : 'Not Rated'}`}</div>
+                </div>
+                <img src={snack[0].image_url} alt={snack[0].name} className='invidivualSnackImage'></img>
+                <div>Price ${snack[0].price}</div>
                 <div>{`${snack[0].is_perishable ? 'This is' : 'Not'}`} Perishable</div>
                 <div>Description:
                     <br></br>
@@ -129,7 +133,6 @@ const Snack = (props) => {
                 </div>
                 <Link className={`${props.userLoggedIn ? '' : 'hidden'}`} to='/add'><button onClick={props.snackIDForReview} id={snack[0].id}>Add Review</button></Link>
                 {review}
-
             </div>
         </>
     )

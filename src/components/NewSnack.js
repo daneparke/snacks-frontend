@@ -5,21 +5,32 @@ const NewSnack = (props) => {
     return (
         <>
             <>
-                <div>
-                    <div className='col-5 addForm'>
-                        <label>Snack Name</label>
-                        <input onChange={props.handleInput} type='text' placeholder='Snack Name' name='snackName' />
-                        <label>Image Url</label>
-                        <input onChange={props.handleInput} type='text' placeholder='Snack Title' name='snackUrl' />
-                        <label>Is This Snack Perishable?</label>
-                        {/* <checkbox></checkbox> */}
-                        <input onChange={props.handleInput} type='boolean' placeholder='Snack Title' name='snackPerishable' />
-                        <label>Snack Price</label>
-                        <input onChange={props.handleInput} type='number' placeholder='Snack Title' name='snackPrice' />
-                        <label>Snack Description</label>
-                        <input onChange={props.handleInput} type='text' placeholder='Snack Text' name='snackDescription' />
+                <div className='col-12 formContainer'>
+                    <div className='formTitle'>Make A New Snack</div>
+                    <div className='form-container col-8'>
+                        <div className='form-group'>
+                            <label>Snack Name</label>
+                            <input onChange={props.handleInput} type='text' placeholder='Snack Name' name='snackName' />
+                        </div>
+                        <div className='form-group'>
+                            <label>Image Url</label>
+                            <textarea rows='1' onChange={props.handleInput} type='text' placeholder='Snack Image URL' name='snackUrl' />
+                        </div>
+                        <div className='form-group'>
+                            <label>Is This Snack Perishable?</label>
+                            {/* <checkbox></checkbox> */}
+                            <input onChange={props.handleInput} type='boolean' placeholder='true or false' name='snackPerishable' />
+                        </div>
+                        <div className='form-group'>
+                            <label>Snack Price</label>
+                            <input onChange={props.handleInput} type='number' placeholder='2.00' name='snackPrice' />
+                        </div>
+                        <div className='form-group'>
+                            <label>Snack Description</label>
+                            <textarea rows='2' onChange={props.handleInput} type='text' placeholder='brief description' name='snackDescription' />
+                        </div>
+                        <Link to={`${props.reviewInputted ? `/newsnack` : '/admin'}`}><button onClick={props.addSnack}>Create New Snack</button></Link>
                     </div>
-                    <Link to={`${props.reviewInputted ? `/newsnack` : '/admin'}`}><button onClick={props.addSnack}>Create New Snack</button></Link>
                 </div>
             </>
         </>

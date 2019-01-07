@@ -160,6 +160,7 @@ class App extends Component {
     fetch(`http://localhost:3000/reviews/${event.target.id}`, {
       method: 'DELETE',
     }).then(() => this.loadReviews())
+      .then(() => this.loadReviews())
   }
   addReview = (event) => {
     if (this.state.reviewInputted === false) {
@@ -312,6 +313,7 @@ class App extends Component {
     fetch(`http://localhost:3000/snacks/${event.target.id}`, {
       method: 'DELETE',
     }).then(() => this.loadSnacks())
+      .then(() => this.loadSnacks())
   }
   loadReviews = () => {
     fetch('http://localhost:3000/reviews')

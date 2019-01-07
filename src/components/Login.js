@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Login = (props) => {
     return (
-        <>
+        <div className='loginContainer'>
             <button className={`btn btn-dark ${props.showFirstButtons ? '' : 'hidden'}`} onClick={props.existingClick}>Existing User</button>
             <button className={`btn btn-dark ${props.showFirstButtons ? '' : 'hidden'}`} onClick={props.signUpClick}>Sign Up</button>
             <div className={`col-5 loginForm ${props.showSignUpInput ? '' : 'hidden'}`}>
@@ -31,7 +31,7 @@ const Login = (props) => {
                 <button className='btn btn-dark' onClick={props.signUpClick}>I Don't Have An Account</button>
                 <div className={`invalidExistingUser ${props.invalidUser ? '' : 'hidden'}`}>Invalid Email or Password. Retry or Create New Account</div>
             </div>
-        </>
+        </div>
     )
 }
 export default Login
