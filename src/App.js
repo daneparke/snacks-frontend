@@ -10,7 +10,6 @@ import './App.css';
 import Header from './components/Header'
 import NewSnack from './components/NewSnack'
 import EditSnack from './components/EditSnack'
-import { Link } from 'react-router-dom'
 
 
 
@@ -93,7 +92,7 @@ class App extends Component {
     if (this.state.existingUserInputted === false) {
       console.log('nope')
     } else {
-      fetch('http://localhost:3000/users')
+      fetch('https://danes-snacks-backend.herokuapp.com/users')
         .then(result => result.json())
         .then((response) => {
           response.map(user => {
@@ -130,7 +129,7 @@ class App extends Component {
       hashed_password: this.state.password,
       admin: this.state.adminSelected
     }
-    fetch('http://localhost:3000/users', {
+    fetch('https://danes-snacks-backend.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -148,7 +147,7 @@ class App extends Component {
       })
   }
   snackDetailsClick = (event) => {
-    fetch(`http://localhost:3000/snacks/${event.target.id}`)
+    fetch(`https://danes-snacks-backend.herokuapp.com/snacks/${event.target.id}`)
       .then(result => result.json())
       .then((response) => {
         this.setState({
@@ -157,10 +156,9 @@ class App extends Component {
       })
   }
   deleteReview = (event) => {
-    fetch(`http://localhost:3000/reviews/${event.target.id}`, {
+    fetch(`https://danes-snacks-backend.herokuapp.com/reviews/${event.target.id}`, {
       method: 'DELETE',
     }).then(() => this.loadReviews())
-      .then(() => this.loadReviews())
   }
   addReview = (event) => {
     if (this.state.reviewInputted === false) {
@@ -177,7 +175,7 @@ class App extends Component {
         snack_id: this.state.reviewSnackID,
         user_id: this.state.currentUser.id
       }
-      fetch('http://localhost:3000/reviews', {
+      fetch('https://danes-snacks-backend.herokuapp.com/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +201,7 @@ class App extends Component {
     this.setState({
       reviewSnackID: event.target.name
     })
-    fetch(`http://localhost:3000/reviews/${event.target.id}`)
+    fetch(`https://danes-snacks-backend.herokuapp.com/reviews/${event.target.id}`)
       .then(result => result.json())
       .then((response) => {
         this.setState({
@@ -229,7 +227,7 @@ class App extends Component {
         rating: this.state.rating,
         snack_id: this.state.reviewSnackID,
       }
-      fetch(`http://localhost:3000/reviews/${event.target.id}`, {
+      fetch(`https://danes-snacks-backend.herokuapp.com/reviews/${event.target.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -248,7 +246,7 @@ class App extends Component {
     }
   }
   editSnackClick = (event) => {
-    fetch(`http://localhost:3000/snacks/${event.target.id}`)
+    fetch(`https://danes-snacks-backend.herokuapp.com/snacks/${event.target.id}`)
       .then(result => result.json())
       .then((response) => {
         this.setState({
@@ -268,7 +266,7 @@ class App extends Component {
       price: this.state.snackPrice,
       image_url: this.state.snackUrl
     }
-    fetch(`http://localhost:3000/snacks/${event.target.id}`, {
+    fetch(`https://danes-snacks-backend.herokuapp.com/snacks/${event.target.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -293,7 +291,7 @@ class App extends Component {
       is_perishable: this.state.snackPerishable,
       image_url: this.state.snackUrl,
     }
-    fetch('http://localhost:3000/snacks', {
+    fetch('https://danes-snacks-backend.herokuapp.com/snacks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -310,13 +308,12 @@ class App extends Component {
       })
   }
   deleteSnack = (event) => {
-    fetch(`http://localhost:3000/snacks/${event.target.id}`, {
+    fetch(`https://danes-snacks-backend.herokuapp.com/snacks/${event.target.id}`, {
       method: 'DELETE',
     }).then(() => this.loadSnacks())
-      .then(() => this.loadSnacks())
   }
   loadReviews = () => {
-    fetch('http://localhost:3000/reviews')
+    fetch('https://danes-snacks-backend.herokuapp.com/reviews')
       .then(result => result.json())
       .then((response) => {
         this.setState({
@@ -325,7 +322,7 @@ class App extends Component {
       })
   }
   loadSnacks = () => {
-    fetch('http://localhost:3000/snacks')
+    fetch('https://danes-snacks-backend.herokuapp.com/snacks')
       .then(result => result.json())
       .then((response) => {
         this.setState({
