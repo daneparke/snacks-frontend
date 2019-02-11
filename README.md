@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Snacks Front End
+Snack rating web application that allows users to add reviews on snacks, report reviews, and edit/delete the users own reviews. As an admin on the site you have access to delete any users reviews, add reviews on snacks, edit/delete your own reviews, creating new snacks, and editing/deleting existing snacks. 
+As my time at Galvanize was coming to an end we were given the task to create a full stack application using a new technology, in 10 days. I created this mobile app, using React Native and Redux for my new technologies. 
 
-## Available Scripts
+Packr Trackr is a way for backpackers in the hostel community to stay connected. A user can checkin to a hostel, have access to the hostel's message board and the ability to view people currently staying at the hostel. This allows backpackers to broadcast messages to the entire hostel about adventures/activites that they want to go on. My app also allows backpackers to track their friends trips, message friends, and be notified if they their friend ends up being in the same town they are currently in. 
 
-In the project directory, you can run:
 
-### `npm start`
+[Packr Trackr Demo Video](./assets/PackrTrackrDemo.MP4)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Login Page](./assets/LoginImage.PNG)
+![Home Page](./assets/HomeImage.PNG)
+![Hostel Home](./assets/HostelHome.PNG)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Technology Used
 
-### `npm test`
+* [React Native](https://facebook.github.io/react-native/docs/getting-started.html) - JavaScript framework for writing real, natively rendering movile applications.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [Redux](https://github.com/reduxjs/redux/tree/master/docs)- JavaScript library for managing application state.
 
-### `npm run build`
+* [React Native Router Flux](http://docs.nativebase.io/docs/examples/navigation/RNRFBasicExample.html) - Navigation
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Java Script](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Primary language
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment 
+* Back end deployed with Heroku:
+Navigate to [Packr Trackr Back End](https://packr-trackr-db.herokuapp.com/)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Further help
+If more help is needed please refer to Self Help Database located at: 
+`google.com`.

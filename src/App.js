@@ -54,7 +54,6 @@ class App extends Component {
     const { value, name } = event.target
     this.setState({
       [name]: value,
-      invalidUser: false
     })
     if (this.state.title.length > 0 && this.state.reviewText.length > 0 && this.state.rating > 0) {
       if (this.state.rating <= 5) {
